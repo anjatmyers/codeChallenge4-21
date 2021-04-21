@@ -1,3 +1,5 @@
+// This problem took roughly an hour to complete. 
+
 // Problem:
 // Given: a string input of 2 numbers separated by a space. i.e. "1 10"
 // Solve: Find the highest occurring digit of the prime numbers that occur in the range given by the input (inclusive). 
