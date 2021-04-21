@@ -16,7 +16,7 @@ let str = "1 20";
 // return 7
 
 const highestOccuringPrimeDigit = (str) => {
-    
+    // split string on the space to make array
     let strArr = str.split(" ");
     
     let num1 = parseInt(strArr[0]);
@@ -26,6 +26,7 @@ const highestOccuringPrimeDigit = (str) => {
     let highestOccurance = 0;
     let digit = '';
 
+    // isPrime function
     const isPrime = (n) => {
         if(n == 1){
             return false;
@@ -40,7 +41,8 @@ const highestOccuringPrimeDigit = (str) => {
         }
     }
     
-
+    // checks numbers in the range between num1 and num2
+    // i is pushed to the fullRange array if it is a prime number
     for(let i=num1; i<=num2; i++){
         if(i == 2 || i == 3 || i == 5){
             fullRange.push(i)
@@ -51,9 +53,10 @@ const highestOccuringPrimeDigit = (str) => {
         
     }
     
-
+    // this joins all prime numbers then splits them so each digit has its own index
     let singleDigitArr = fullRange.join('').split('');
 
+    // pushes digits to an object where it tracks the occurance of each number
     for(let x in singleDigitArr){
         if(!(singleDigitArr[x] in digitObj)){
             digitObj[singleDigitArr[x]] = 1;
@@ -63,7 +66,8 @@ const highestOccuringPrimeDigit = (str) => {
         }
     }
 
-
+    // this finds the digit with the highest occurance from digitObj
+    // if two digits have the same occurrance, it returns the greater digit
     for(let key in digitObj){
         if(digitObj[key] > highestOccurance){
             highestOccurance = digitObj[key];
