@@ -12,7 +12,9 @@
 
 // let str = "1 10";
 // return 7
-let str = "1 20";
+// let str = "1 20";
+// let str= "2252 2261"
+let str= "0 1"
 // return 1
 // let str = "1 99";
 // return 7
@@ -25,12 +27,12 @@ const highestOccuringPrimeDigit = (str) => {
     let num2 = parseInt(strArr[1]);
     let fullRange = [];
     let digitObj = {};
-    let highestOccurance = 0;
-    let digit = '';
+    // let highestOccurance = 0;
+    // let digit = '';
 
     // isPrime function
     const isPrime = (n) => {
-        if(n == 1){
+        if(n == 1 || n== 0){
             return false;
         }
         else{
@@ -55,6 +57,10 @@ const highestOccuringPrimeDigit = (str) => {
         
     }
     
+    if (fullRange.length == 0){
+        return "No primes in string"
+    }
+
     // this joins all prime numbers then splits them so each digit has its own index
     let singleDigitArr = fullRange.join('').split('');
 
@@ -70,20 +76,45 @@ const highestOccuringPrimeDigit = (str) => {
 
     // this finds the digit with the highest occurance from digitObj
     // if two digits have the same occurrance, it returns the greater digit
-    for(let key in digitObj){
-        if(digitObj[key] > highestOccurance){
-            highestOccurance = digitObj[key];
-            digit = key
-        }
-        else if(digitObj[key] == highestOccurance){
-            if(key > digit){
+    
+    // for(let key in digitObj){
+    //     if(digitObj[key] > highestOccurance){
+    //         highestOccurance = digitObj[key];
+    //         digit = key
+    //     }
+    //     else if(digitObj[key] == highestOccurance){
+    //         if(key > digit){
+    //             highestOccurance = digitObj[key];
+    //             digit = key
+    //         }
+    //     }
+    // }
+
+    // return digit;
+
+    const findHighestOccurance = (digitObj) => {
+        let highestOccurance = 0;
+        let digit = '';
+
+        for(let key in digitObj){
+            if(digitObj[key] > highestOccurance){
                 highestOccurance = digitObj[key];
                 digit = key
             }
+            else if(digitObj[key] == highestOccurance){
+                if(key > digit){
+                    digit = key
+                }
+            }
         }
+
+        return digit;
+
     }
     
-    return digit;
+    
+    return findHighestOccurance(digitObj);
+
 }
 
 
